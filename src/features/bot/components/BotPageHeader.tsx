@@ -14,9 +14,9 @@ export const BotPageHeader = ({ bot }) => {
 			<p className='flex gap-3 font-[600] items-center'><UsersIcon /> {bot._count.botUsers}</p>
 			<Link target='_blank' to={`https://t.me/${bot.telegram}`}
 						className={`${buttonVariants({
-							variant: 'card',
+							variant: 'botPage',
 							size: 'sm'
-						})} flex gap-2 text-white border-white hover:bg-white hover:text-black`}>Перейти <MoveRightIcon
+						})} flex gap-2`}>Перейти <MoveRightIcon
 				className='w-[16px]' /></Link>
 		</div>
 	</div>

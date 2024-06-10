@@ -20,7 +20,8 @@ const buttonVariants = cva(
         link: "text-slate-900 underline-offset-4 hover:underline",
         nav: "bg-secondary border-2 border-secondary rounded-[50px] text-[14px] duration-300 text-white hover:bg-secondary/90 font-[600] leading-[1.5]",
         home: "bg-transparent border-2 border-accent rounded-[50px] text-[16px] duration-300 text-accent hover:bg-accent hover:text-white font-[500] leading-[1.5]",
-        card: "bg-transparent border-2 border-accent rounded-[50px] text-[16px] duration-300 text-accent hover:bg-accent hover:text-white font-[500] leading-[1.5]"
+        card: "bg-transparent border-2 border-accent rounded-[50px] text-[16px] duration-300 text-accent hover:bg-accent hover:text-white font-[500] leading-[1.5]",
+        botPage: "bg-transparent border-2 rounded-[50px] text-white border-white hover:text-black text-[16px] duration-300 text-white hover:bg-white font-[500] leading-[1.5]",
       },
       size: {
         default: "h-10 px-4 py-2",
