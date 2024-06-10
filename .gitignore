@@ -1,0 +1,14 @@
+node_modules
+*.log
+
+dist
+
+.vit
+
+stats.html
+
+.eslintcache
+
+.env
+
+.idea

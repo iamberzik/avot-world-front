@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    height: 100dvh;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+#root {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content auto;
+    height: 100vh;
+}
+
+#root header {
+    grid-row: 1;
+}
+
+#root section {
+    grid-row: 2
+}
+
+.btn,
+.btn2 {
+    width: 180px;
+    height: 48px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 500;
+    font-size: 16px;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(-45deg, #ed6bb6, #d36ac6, #b669d7, #7a66fb);
+    background-size: 600%;
+    -webkit-animation: anime 5s linear infinite;
+    animation: anime 5s linear infinite;
+}
+
+.btn2 {
+    position: absolute;
+    margin-top: -10px;
+    margin-left: -150px;
+    z-index: -1;
+    filter: blur(20px);
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+@-webkit-keyframes anime {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+@keyframes anime {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.pageHeader {
+    background: linear-gradient(90deg, #ed6bb6, #d36ac6, #b669d7, #7a66fb);
+    color: white;
+    background-size: 600%;
+    -webkit-animation: anime 5s linear infinite;
+    animation: anime 5s linear infinite;
+}
