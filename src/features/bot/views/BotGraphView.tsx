@@ -62,7 +62,7 @@ export const BotGraphView = () => {
 	if (!graphData.data) return <></>
 
 	return <div className='lg:border-[1px] p-[22px] rounded-xl'>
-		<div className='flex justify-end mb-6'>
+		<div className='flex justify-center sm:justify-end mb-6'>
 			<div className={cn('grid gap-2')}>
 				<Popover>
 					<PopoverTrigger asChild>
@@ -102,9 +102,9 @@ export const BotGraphView = () => {
 				</Popover>
 			</div>
 		</div>
-		<ResponsiveContainer height={'85%'}>
-			<LineChart width={300} height={300} data={graphState} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-				<Line type='monotone' dataKey='requests' string={'assa'} stroke='#6bb431' />
+		<ResponsiveContainer width={"100%"} height={'85%'} minHeight={'300px'}>
+			<LineChart data={graphState} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+				<Line type='monotone' dataKey='requests' stroke='#6bb431' />
 				<Line type='monotone' dataKey='users' stroke='#484848' />
 				<XAxis dataKey='date' color="#484848" />
 				<YAxis color="#484848" />
