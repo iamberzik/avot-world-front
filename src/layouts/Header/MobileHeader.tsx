@@ -1,9 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { favicon } from '@/assets'
+import { favicon, logoNoBackground } from '@/assets'
 import { buttonVariants } from '@/components/ui/button'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { useState } from 'react'
+import { Badge } from '@/components/ui/badge.tsx'
 
 export const MobileHeader = () => {
 	const navigate = useNavigate()
@@ -19,7 +20,7 @@ export const MobileHeader = () => {
 	}
 
 	return <header className='container bg-white py-[22px] flex lg:hidden items-center justify-between'>
-		<Link to='/'><img src={favicon} alt='Логотип' className='h-[28px]' /></Link>
+		<Link to='/' className="flex items-center gap-3"><img src={favicon} alt='Логотип' className='h-[28px]' /><Badge variant="header">Бета</Badge></Link>
 		<HamburgerMenuIcon className='h-[28px] w-[28px] cursor-pointer' onClick={toggleModal}></HamburgerMenuIcon>
 		<Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
 			<DialogContent>

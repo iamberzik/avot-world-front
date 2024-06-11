@@ -13,7 +13,7 @@ const BotPage = () => {
 	return <div className='lg:grid grid-cols-[1fr] grid-rows-[min-content_auto] gap-[40px] h-[95%]'>
 		<PageMeta pageTitle={bot.data.title} />
 		<BotPageHeader bot={bot.data} />
-		<BotGraphView />
+		<BotGraphView botType={bot.data.type} />
 
 	</div>
 }

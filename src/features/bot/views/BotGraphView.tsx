@@ -11,13 +11,17 @@ import moment from 'moment'
 import { cn } from '@/utils/utils.ts'
 import { DateRange } from 'react-day-picker'
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload, label, type }) => {
 	if (active) {
 		return (
-			<div className="bg-white rounded-xl border-2 p-[5px]">
-				<p className="font-[600]">{label}</p>
-				<p className="text-green-pulse">Запросов: {payload[0].value}</p>
-				<p className="text-gray-utils">Пользователей: {payload[1].value} </p>
+			<div className='bg-white rounded-xl border-2 p-[5px]'>
+				<p className='font-[600]'>{label}</p>
+				{
+					type === 'AVATAR' ? <>
+						<p className='text-green-pulse'>Запросов: {payload[0].value}</p>
+						<p className='text-gray-utils'>Пользователей: {payload[1].value} </p>
+					</> : <p className='text-gray-utils'>Пользователей: {payload[0].value} </p>
+				}
 			</div>
 		)
 	}
@@ -25,7 +29,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 	return null
 }
 
-export const BotGraphView = () => {
+export const BotGraphView = ({ botType }) => {
 	const { botId } = useParams()
 
 	const [date, setDate] = useState<DateRange | undefined>({
@@ -47,7 +51,7 @@ export const BotGraphView = () => {
 
 		Object.keys(graphData.data).map((key) => fixedData.push({
 			date: moment(key).format('DD.MM.YYYY'),
-			requests: graphData.data[key].requests,
+			requests: botType === 'AVATAR' ? graphData.data[key].requests : 0,
 			users: graphData.data[key].users
 		}))
 
@@ -102,13 +106,16 @@ export const BotGraphView = () => {
 				</Popover>
 			</div>
 		</div>
-		<ResponsiveContainer width={"100%"} height={'85%'} minHeight={'300px'}>
+		<ResponsiveContainer width={'100%'} height={'85%'} minHeight={'300px'}>
 			<LineChart data={graphState} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-				<Line type='monotone' dataKey='requests' stroke='#6bb431' />
+
+				{
+					botType === 'AVATAR' && <Line type='monotone' dataKey='requests' stroke='#6bb431' />
+				}
 				<Line type='monotone' dataKey='users' stroke='#484848' />
-				<XAxis dataKey='date' color="#484848" />
-				<YAxis color="#484848" />
-				<Tooltip content={<CustomTooltip />} />
+				<XAxis dataKey='date' color='#484848' />
+				<YAxis color='#484848' />
+				<Tooltip content={<CustomTooltip type={botType} />} />
 			</LineChart>
 		</ResponsiveContainer>
 
