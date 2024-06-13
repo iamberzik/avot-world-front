@@ -10,7 +10,7 @@ export const DesktopUserSidebar = () => {
 		<ProfileSidebarItem />
 		<div>
 			<p className='text-[18px] font-[600] mt-[40px] mb-[20px]'>Боты</p>
-			<div>
+			<div className="flex flex-col gap-3">
 				{
 					!!bots.data && bots.data.map((b, i) => <BotSidebarItem bot={b} key={i} />)
 				}
