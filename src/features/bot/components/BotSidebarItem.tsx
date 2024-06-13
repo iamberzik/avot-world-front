@@ -4,7 +4,7 @@ export const BotSidebarItem = ({ bot }) => {
 	const location = useLocation()
 	const botLink = `/lk/bots/${bot.telegramId}`
 
-	const activeLink = location.pathname == botLink
+	const activeLink = location.pathname.includes(botLink)
 
 	return <Link to={botLink}
 		className={`flex items-center gap-3 text-[15px] font-[600] hover:text-secondary duration-300 ${activeLink ? 'text-secondary' : 'text-gray-utils'}`}>

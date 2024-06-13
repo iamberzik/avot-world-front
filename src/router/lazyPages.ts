@@ -16,6 +16,18 @@ export const ProfilePageLazy = lazy(
 	() => import('@/features/profile/pages/ProfilePage')
 )
 
-export const BotPageLazy = lazy(
-	() => import('@/features/bot/pages/BotPage')
+export const BotUsersPageLazy = lazy(
+	() => import('@/features/bot/pages/BotUsersPage')
+)
+
+export const BotRequestsPageLazy = lazy(
+	() => import('@/features/bot/pages/BotRequestsPage')
+)
+
+export const BotTemplatesPageLazy = lazy(
+	() => import('@/features/bot/pages/BotTemplatesPage')
+)
+
+export const BotStatusesPageLazy = lazy(
+	() => import('@/features/bot/pages/BotStatusesPage')
 )

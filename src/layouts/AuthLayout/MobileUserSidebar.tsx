@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useGetOwnedBots } from '@/features/bot/data/hooks.ts'
 import { useEffect, useState } from 'react'
 import {
@@ -13,6 +13,7 @@ import {
 
 
 export const MobileUserSidebar = () => {
+	const { botId } = useParams()
 	const location = useLocation()
 	const navigate = useNavigate()
 	const bots = useGetOwnedBots()
@@ -36,13 +37,12 @@ export const MobileUserSidebar = () => {
 	}, [bots.data])
 
 	return <div className='px-[22px] my-[22px] lg:hidden'>
-		<Select onValueChange={handleChange} defaultValue={location.pathname}>
+		<Select onValueChange={handleChange} defaultValue={!!botId ? `/lk/bots/${botId}` : location.pathname}>
 			<SelectTrigger>
 				<SelectValue />
 			</SelectTrigger>
 			<SelectContent>
 				<SelectItem value='/lk'>Профиль</SelectItem>
-
 				<SelectGroup>
 					<SelectLabel>Боты</SelectLabel>
 					{

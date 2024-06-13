@@ -28,8 +28,10 @@ module.exports = {
 			colors: {
 				'gray-title': '#f8f8f8',
 				'gray-utils': '#484848',
-				'accent': '#f66bb1',
-				'secondary': '#7a66fb',
+				accent: '#f66bb1',
+				secondary: '#7a66fb',
+				adjust: '#EF5B2A',
+				'adjust-dark': '#8d47a9',
 				'green-pulse': '#6bb431'
 			},
 			keyframes: {

@@ -10,14 +10,11 @@ export const BotPageHeader = ({ bot }) => {
 					 alt={`Аватарка бота ${bot.title}`} />
 			<p className='text-[18px] font-[700] '>{bot.title}</p>
 		</div>
-		<div className='flex items-center justify-between gap-[30px]'>
-			<p className='flex gap-3 font-[600] items-center'><UsersIcon /> {bot._count.botUsers}</p>
-			<Link target='_blank' to={`https://t.me/${bot.telegram}`}
-						className={`${buttonVariants({
-							variant: 'botPage',
-							size: 'sm'
-						})} flex gap-2`}>Перейти <MoveRightIcon
-				className='w-[16px]' /></Link>
-		</div>
+		<Link target='_blank' to={`https://t.me/${bot.telegram}`}
+					className={`${buttonVariants({
+						variant: 'botPage',
+						size: 'sm'
+					})} flex gap-2`}>Перейти <MoveRightIcon
+			className='w-[16px]' /></Link>
 	</div>
 }

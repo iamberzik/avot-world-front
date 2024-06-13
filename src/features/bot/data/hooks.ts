@@ -31,10 +31,34 @@ export const useGetBotById = (id: number | string | null) => {
 	})
 }
 
-export const useGetBotStatByIdAndQuery = (id: number | string | null, dates: DateRange) => {
+export const useGetBotUsersStat = (id: number | string | null, data: any) => {
 	return useQuery<any, AxiosError>({
-		queryKey: ['bot stat', id],
-		queryFn: () => BotService.getBotStatByIdAndQuery(id!, dates),
+		queryKey: ['bot stat users', id],
+		queryFn: () => BotService.getBotUsersStat(id!, data),
+		enabled: !!id
+	})
+}
+
+export const useGetBotRequestsStat = (id: number | string | null, data: any) => {
+	return useQuery<any, AxiosError>({
+		queryKey: ['bot stat requests', id],
+		queryFn: () => BotService.getBotRequestsStat(id!, data),
+		enabled: !!id
+	})
+}
+
+export const useGetBotTemplatesStat = (id: number | string | null, data: any) => {
+	return useQuery<any, AxiosError>({
+		queryKey: ['bot stat templates', id],
+		queryFn: () => BotService.getBotTemplatesStat(id!, data),
+		enabled: !!id
+	})
+}
+
+export const useGetBotStatusesStat = (id: number | string | null, data: any) => {
+	return useQuery<any, AxiosError>({
+		queryKey: ['bot stat statuses', id],
+		queryFn: () => BotService.getBotStatusesStat(id!, data),
 		enabled: !!id
 	})
 }

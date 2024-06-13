@@ -1,7 +1,15 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
-import { BotCatalogPageLazy, BotPageLazy, HomePageLazy, LoginPageLazy, ProfilePageLazy } from '@/router/lazyPages.ts'
+import {
+	BotCatalogPageLazy,
+	BotRequestsPageLazy, BotStatusesPageLazy, BotTemplatesPageLazy,
+	BotUsersPageLazy,
+	HomePageLazy,
+	LoginPageLazy,
+	ProfilePageLazy
+} from '@/router/lazyPages.ts'
 import MainLayout from '@/layouts/MainLayout.tsx'
 import AuthLayout from '@/layouts/AuthLayout'
+import BotDefaultPage from '@/layouts/AuthLayout/BotDefaultPage.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -33,11 +41,24 @@ export const router = createBrowserRouter([
 								element: <ProfilePageLazy />
 							},
 							{
-								path: 'bots',
+								path: 'bots/:botId',
+								element: <BotDefaultPage />,
 								children: [
 									{
-										path: ':botId',
-										element: <BotPageLazy />
+										path: '',
+										element: <BotUsersPageLazy />
+									},
+									{
+										path: 'requests',
+										element: <BotRequestsPageLazy />
+									},
+									{
+										path: 'templates',
+										element: <BotTemplatesPageLazy />
+									},
+									{
+										path: 'statuses',
+										element: <BotStatusesPageLazy />
 									}
 								]
 

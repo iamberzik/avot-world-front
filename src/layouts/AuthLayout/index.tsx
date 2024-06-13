@@ -13,12 +13,9 @@ const AuthLayout = () => {
 		}
 	}, [])
 
-	return <div className="lg:container lg:flex lg:mt-[20px] lg:gap-[60px]">
+	return <div className='grid grid-rows-[min-content_auto] lg:grid-cols-[min-content_auto] lg:grid-rows-[1fr] lg:container lg:gap-[60px]'>
 		<UserSidebar />
-		<div className="flex-grow">
-			<Outlet />
-		</div>
-
+		<Outlet />
 	</div>
 }
 
