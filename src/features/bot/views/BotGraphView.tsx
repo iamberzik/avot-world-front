@@ -10,7 +10,7 @@ export const BotGraphView = ({
 															 setDates,
 															 title,
 															 color,
-	badge,
+															 badge,
 															 filtersArray = [],
 															 filter = '',
 															 setFilter = () => {
@@ -20,6 +20,10 @@ export const BotGraphView = ({
 	const [changeSumState, setChangeSumState] = useState(0)
 
 	useEffect(() => {
+		if (graphData.length === 0) {
+			return
+		}
+
 		const fixedData = []
 		let changeSum = 0
 
@@ -41,7 +45,10 @@ export const BotGraphView = ({
 		<BotCalendarComponent dates={dates} title={title} setDates={setDates} change={changeSumState}
 													filtersArray={filtersArray} filter={filter} setFilter={setFilter} badge={badge} />
 		<div className='w-full h-[65%] md:h-[80%]'>
-			<BotGraphComponent title={title} graphState={graphState} color={color} />
+			{
+				graphData.length !== 0 && <BotGraphComponent title={title} graphState={graphState} color={color} />
+			}
+
 		</div>
 
 
