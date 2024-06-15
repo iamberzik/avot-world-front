@@ -7,7 +7,7 @@ import { addDays } from 'date-fns'
 
 const BotUsersPage = () => {
 	const [dates, setDates] = useState<DateRange | undefined>({
-		from: addDays(new Date(), -14),
+		from: addDays(new Date(), -7),
 		to: new Date()
 	})
 

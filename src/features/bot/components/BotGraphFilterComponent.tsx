@@ -5,24 +5,25 @@ import { Calendar as CalendarIcon } from 'lucide-react'
 import { format } from 'date-fns'
 import { Calendar } from '@/components/ui/calendar.tsx'
 import { Badge } from '@/components/ui/badge.tsx'
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue
-} from '@/components/ui/select'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
-export const BotCalendarComponent = ({ dates, setDates, title, change, filtersArray, filter, setFilter, badge }) => {
-	return <div className='flex flex-col sm:flex-row justify-between items-center mb-6 gap-3'>
-		<div className='flex items-center gap-2 order-2'>
-			<p className='text-lg font-bold'>{title}</p>
-			<Badge variant={badge}>+{change}</Badge>
-		</div>
-		<div className='flex flex-col gap-3 sm:flex-row sm:order-2'>
+export const BotGraphFilterComponent = ({
+																					dates,
+																					setDates,
+																					title,
+																					change,
+																					filtersArray,
+																					filter,
+																					setFilter,
+																					badge,
+																					mode,
+																					setMode
+																				}) => {
+	return <div className='flex flex-col sm:flex-row justify-between items-center mb-6 gap-3 px-[12px] sm:px-0'>
+		<div className='w-full sm:flex items-center gap-2 sm:w-auto space-y-4 sm:space-y-0 sm:order-2'>
 			{
 				filtersArray.length > 0 && <Select onValueChange={setFilter} defaultValue={filter}>
-					<SelectTrigger>
+					<SelectTrigger className='w-full sm:w-auto'>
 						<SelectValue placeholder='Шаблон' />
 					</SelectTrigger>
 					<SelectContent>
@@ -34,15 +35,25 @@ export const BotCalendarComponent = ({ dates, setDates, title, change, filtersAr
 					</SelectContent>
 				</Select>
 			}
+			<Select defaultValue={mode} onValueChange={setMode}>
+				<SelectTrigger className='w-full sm:w-auto'>
+					<SelectValue placeholder='График' />
+				</SelectTrigger>
+				<SelectContent>
 
-			<div className={cn('grid gap-2 ')}>
+					<SelectItem value='value'>Всего</SelectItem>
+					<SelectItem value='change'>Изменения</SelectItem>
+
+				</SelectContent>
+			</Select>
+			<div className={cn('grid gap-2 w-full sm:w-auto')}>
 				<Popover>
 					<PopoverTrigger asChild>
 						<Button
 							id='date'
 							variant={'outline'}
 							className={cn(
-								'justify-center',
+								'w-full justify-center',
 								!dates && 'text-muted-foreground'
 							)}
 						>
@@ -74,6 +85,11 @@ export const BotCalendarComponent = ({ dates, setDates, title, change, filtersAr
 				</Popover>
 			</div>
 		</div>
+		<div className='flex items-center gap-2 order-2 sm:order-1'>
+			<p className='text-lg font-bold'>{title}</p>
+			<Badge variant={badge}>+{change}</Badge>
+		</div>
+
 
 	</div>
 }

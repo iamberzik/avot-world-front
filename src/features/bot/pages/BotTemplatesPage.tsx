@@ -8,7 +8,7 @@ import { prepareTitlesToSelect } from '@/utils/prepareDataToSelect.ts'
 
 const BotTemplatesPage = () => {
 	const [dates, setDates] = useState<DateRange | undefined>({
-		from: addDays(new Date(), -14),
+		from: addDays(new Date(), -7),
 		to: new Date()
 	})
 	const [template, setTemplate] = useState('Все')
