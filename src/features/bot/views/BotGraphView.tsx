@@ -42,24 +42,38 @@ export const BotGraphView = ({
 			setChangeSumState(0)
 		}
 	}, [graphData])
-
-	return <div className='lg:border-[1px] box-border p-[10px] lg:p-[22px] rounded-xl'>
-		<BotGraphFilterComponent dates={dates} title={title} setDates={setDates} change={changeSumState}
-														 filtersArray={filtersArray} filter={filter} setFilter={setFilter} badge={badge}
-														 mode={mode} setMode={setMode} />
-		<div className='w-full h-[50%] sm:h-[65a%] md:h-[80%]'>
-			{
-				graphState.length > 0 ? <BotGraphComponent title={title} graphState={graphState} color={color} mode={mode} /> :
-					<div className='h-full bg-gray-200 rounded-xl flex justify-center items-center'>
-						<div className='text-gray-utils flex flex-col items-center gap-3 text-xl font-bold'>
-							<BarChart3 className='w-[60px] h-[60px]' />
-							<p>Нет данных</p>
+	try {
+		return <div className='lg:border-[1px] box-border p-[10px] lg:p-[22px] rounded-xl'>
+			<BotGraphFilterComponent dates={dates} title={title} setDates={setDates} change={changeSumState}
+															 filtersArray={filtersArray} filter={filter} setFilter={setFilter} badge={badge}
+															 mode={mode} setMode={setMode} />
+			<div className='w-full h-[50%] sm:h-[65a%] md:h-[80%]'>
+				{
+					graphState.length > 0 ?
+						<BotGraphComponent title={title} graphState={graphState} color={color} mode={mode} />
+						:
+						<div className='h-full bg-gray-200 rounded-xl flex justify-center items-center'>
+							<div className='text-gray-utils flex flex-col items-center gap-3 text-xl font-bold'>
+								<BarChart3 className='w-[60px] h-[60px]' />
+								<p>Нет данных</p>
+							</div>
 						</div>
-					</div>
-			}
+				}
 
+			</div>
 		</div>
+	} catch (e) {
+		return <div className='lg:border-[1px] box-border p-[10px] lg:p-[22px] rounded-xl'>
+			<BotGraphFilterComponent dates={dates} title={title} setDates={setDates} change={changeSumState}
+															 filtersArray={filtersArray} filter={filter} setFilter={setFilter} badge={badge}
+															 mode={mode} setMode={setMode} />
+			<div className='w-full h-[50%] sm:h-[65a%] md:h-[80%] bg-gray-200 rounded-xl flex justify-center items-center'>
+				<div className='text-gray-utils flex flex-col items-center gap-3 text-xl font-bold'>
+					<BarChart3 className='w-[60px] h-[60px]' />
+					<p>Нет данных</p>
+				</div>
+			</div>
+		</div>
+	}
 
-
-	</div>
 }
