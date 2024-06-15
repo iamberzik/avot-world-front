@@ -21,28 +21,26 @@ export const BotGraphView = ({
 	const [mode, setMode] = useState('value')
 
 	useEffect(() => {
-		if (Object.keys(graphData).length === 0) {
+		try {
+			const fixedData = []
+			let changeSum = 0
+
+			Object.keys(graphData).map((key) => {
+				fixedData.push({
+					date: moment(key).format('DD.MM.YYYY'),
+					value: graphData[key].value,
+					change: graphData[key].change
+				})
+				changeSum += graphData[key].change
+			})
+
+
+			setGraphState(fixedData)
+			setChangeSumState(changeSum)
+		} catch (e) {
 			setGraphState([])
 			setChangeSumState(0)
-			return
 		}
-
-		const fixedData = []
-		let changeSum = 0
-
-		Object.keys(graphData).map((key) => {
-			fixedData.push({
-				date: moment(key).format('DD.MM.YYYY'),
-				value: graphData[key].value,
-				change: graphData[key].change
-			})
-			changeSum += graphData[key].change
-		})
-
-
-		setGraphState(fixedData)
-		setChangeSumState(changeSum)
-
 	}, [graphData])
 
 	return <div className='lg:border-[1px] box-border p-[10px] lg:p-[22px] rounded-xl'>
